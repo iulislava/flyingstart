@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English with Joy | Репетитор Английского</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --primary: #6C63FF; /* Electric Purple */
+            --secondary: #FFD93D; /* Bright Yellow */
+            --accent: #FF6584; /* Hot Pink */
+            --dark: #2D2D2D;
+            --light: #F9F9F9;
+            --white: #FFFFFF;
+            --shadow: 0 10px 20px rgba(0,0,0,0.08);
+            --radius: 20px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 600;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* --- HEADER --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            color: var(--primary);
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-weight: 700;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        .btn-cta {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(108, 99, 255, 0.3);
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(108, 99, 255, 0.4);
+            background-color: #5a52d5;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 80px 5%;
+            min-height: 90vh;
+            background: linear-gradient(135deg, #fff 50%, #f0f0ff 50%);
+        }
+
+        .hero-text {
+            flex: 1;
+            padding-right: 50px;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .hero-text h1 span {
+            color: var(--primary);
+            position: relative;
+        }
+        
+        .hero-text h1 span::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            height: 15px;
+            background-color: var(--secondary);
+            z-index: -1;
+            opacity: 0.6;
+            border-radius: 10px;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: #666;
+        }
+
+        .hero-img {
+            flex: 1;
+            position: relative;
+        }
+
+        .hero-img img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transform: rotate(3deg);
+            border: 5px solid var(--white);
+        }
+
+        /* --- FEATURES / ABOUT --- */
+        .features {
+            padding: 80px 5%;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: var(--primary);
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--white);
+            padding: 40px 20px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+            border-bottom: 5px solid transparent;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card.purple { border-color: var(--primary); }
+        .card.yellow { border-color: var(--secondary); }
+        .card.pink { border-color: var(--accent); }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        /* --- PRICING --- */
+        .pricing {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 80px 5%;
+            text-align: center;
+            border-radius: 40px 40px 0 0;
+        }
+
+        .pricing .section-title {
+            color: var(--white);
+        }
+
+        .pricing-card {
+            background: var(--white);
+            color: var(--dark);
+            padding: 40px;
+            border-radius: var(--radius);
+            max-width: 400px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card::before {
+            content: 'POPULAR';
+            background: var(--accent);
+            color: white;
+            padding: 5px 40px;
+            transform: rotate(45deg);
+            position: absolute;
+            top: 25px;
+            right: -35px;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+
+        .price {
+            font-size: 3rem;
+            font-family: 'Fredoka', sans-serif;
+            color: var(--primary);
+            margin: 20px 0;
+        }
+
+        .price span {
+            font-size: 1rem;
+            color: #888;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        .features-list {
+            text-align: left;
+            margin-bottom: 30px;
+        }
+
+        .features-list li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .check {
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        /* --- CONTACT --- */
+        .contact {
+            padding: 80px 5%;
+            text-align: center;
+            background: #fff;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--light);
+            padding: 40px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #eee;
+            border-radius: 10px;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .btn-submit {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 15px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn-submit:hover {
+            background-color: #ff4066;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: var(--dark);
+            color: var(--white);
+            text-align: center;
+            padding: 30px;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 40px;
+            }
+            .hero-text {
+                padding-right: 0;
+                margin-bottom: 50px;
+            }
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            nav {
+                display: none; /* Simple hiding for mobile demo */
+            }
+            .logo {
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">English<span>WithJoy</span></div>
+        <nav>
+            <ul>
+                <li><a href="#about">Обо мне</a></li>
+                <li><a href="#method">Методика</a></li>
+                <li><a href="#pricing">Цены</a></li>
+            </ul>
+        </nav>
+        <a href="#contact" class="btn-cta">Записаться</a>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Английский без скуки и зубрежки! <br><span>Start speaking today.</span></h1>
+            <p>Помогу заговорить уверенно за 3 месяца. Индивидуальный подход, современные методики и только живое общение.</p>
+            <a href="#contact" class="btn-cta" style="padding: 15px 40px; font-size: 1.2rem;">Попробовать бесплатно</a>
+        </div>
+        <div class="hero-img">
+            <!-- Using placeholder image -->
+            <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Happy Teacher">
+        </div>
+    </section>
+
+    <!-- Features / About -->
+    <section id="about" class="features">
+        <h2 class="section-title">Почему выбирают меня?</h2>
+        <div class="cards-grid">
+            <div class="card purple">
+                <div class="card-icon">🚀</div>
+                <h3>Быстрый старт</h3>
+                <p>Первые фразы вы начнете говорить уже на первом занятии. Никакой воды, только практика.</p>
+            </div>
+            <div class="card yellow">
+                <div class="card-icon">🎮</div>
+                <h3>Интерактив</h3>
+                <p>Используем сериалы, мемы, игры и современные статьи. Забудьте про скучные учебники 90-х.</p>
+            </div>
+            <div class="card pink">
+                <div class="card-icon">🎯</div>
+                <h3>Результат</h3>
+                <p>Четкий план обучения под ваши цели: переезд, работа, путешествия или экзамены IELTS/TOEFL.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="pricing">
+        <h2 class="section-title">Стоимость обучения</h2>
+        <div class="pricing-card">
+            <h3>Индивидуальный курс</h3>
+            <div class="price">1500₽ <span>/ урок</span></div>
+            <ul class="features-list">
+                <li><span class="check">✔</span> 60 минут чистого общения</li>
+                <li><span class="check">✔</span> Персональная программа</li>
+                <li><span class="check">✔</span> Проверка домашних заданий</li>
+                <li><span class="check">✔</span> Поддержка в мессенджерах 24/7</li>
+                <li><span class="check">✔</span> Гибкий график</li>
+            </ul>
+            <a href="#contact" class="btn-cta" style="display: block; width: 100%;">Выбрать этот план</a>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact">
+        <h2 class="section-title">Запишись на пробный урок</h2>
+        <p style="margin-bottom: 30px;">Оставь заявку, и я свяжусь с тобой в течение часа, чтобы обсудить детали.</p>
+        
+        <form class="contact-form" onsubmit="event.preventDefault(); alert('Спасибо! Заявка отправлена. Я скоро свяжусь с вами!');">
+            <div class="form-group">
+                <label>Ваше имя</label>
+                <input type="text" placeholder="Как к вам обращаться?" required>
+            </div>
+            <div class="form-group">
+                <label>Телефон / Telegram</label>
+                <input type="text" placeholder="+7 (999) 000-00-00" required>
+            </div>
+            <div class="form-group">
+                <label>Цель обучения</label>
+                <textarea rows="3" placeholder="Хочу выучить язык для работы..."></textarea>
+            </div>
+            <button type="submit" class="btn-submit">Отправить заявку</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2023 English With Joy. Все права защищены.</p>
+        <p style="font-size: 0.9rem; margin-top: 10px; opacity: 0.7;">Made with ❤️ for learning</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
